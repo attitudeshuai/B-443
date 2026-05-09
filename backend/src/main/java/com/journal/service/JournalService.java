@@ -91,7 +91,7 @@ public class JournalService {
                 .orElseThrow(() -> BusinessException.notFound("日记不存在"));
 
         // 检查权限
-        if (!journal.getUser().getId().equals(user.getId())) {
+        if (journal.getUser().getId().equals(user.getId())) {
             throw BusinessException.forbidden("没有权限修改此日记");
         }
 

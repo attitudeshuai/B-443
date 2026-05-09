@@ -70,7 +70,7 @@ export const useJournalStore = defineStore('journal', () => {
     loading.value = true
     try {
       const response = await journalService.update(id, data)
-      const index = journals.value.findIndex(j => j.id === id)
+      const index = journals.value.findIndex(j => j.id === String(id))
       if (index !== -1) {
         journals.value[index] = response.data
       }
