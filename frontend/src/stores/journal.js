@@ -70,7 +70,7 @@ export const useJournalStore = defineStore('journal', () => {
     loading.value = true
     try {
       const response = await journalService.update(id, data)
-      const index = journals.value.findIndex(j => j.id === String(id))
+      const index = journals.value.findIndex(j => j.id === Number(id))
       if (index !== -1) {
         journals.value[index] = response.data
       }
@@ -85,7 +85,7 @@ export const useJournalStore = defineStore('journal', () => {
     loading.value = true
     try {
       await journalService.delete(id)
-      journals.value = journals.value.filter(j => j.id !== id)
+      journals.value = journals.value.filter(j => j.id !== Number(id))
     } finally {
       loading.value = false
     }
